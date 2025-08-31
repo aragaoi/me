@@ -15,7 +15,7 @@ import {
   Skeleton,
   SkeletonText,
 } from "@chakra-ui/react";
-import { Github, ExternalLink } from "lucide-react";
+import { Github } from "lucide-react";
 import { contactData } from "@/data/contact";
 import {
   fetchGitHubRepos,
@@ -23,46 +23,9 @@ import {
   GitHubRepo,
 } from "@/services/github";
 
-// Static fallback projects for when GitHub API fails
-const fallbackProjects = [
-  {
-    id: "portfolio-website",
-    name: "Portfolio Website",
-    description: "Modern, responsive portfolio built with Next.js and Chakra UI",
-    language: "TypeScript",
-    topics: ["Next.js", "React", "Chakra UI", "i18n"],
-    html_url: "https://github.com/aragaoi/me",
-  },
-  {
-    id: "ecommerce-platform",
-    name: "E-commerce Platform",
-    description: "Full-stack e-commerce solution with payment integration",
-    language: "JavaScript",
-    topics: ["Node.js", "React", "PostgreSQL", "Stripe"],
-    html_url: "#",
-  },
-  {
-    id: "data-analytics-dashboard",
-    name: "Data Analytics Dashboard",
-    description: "Real-time business intelligence platform for data-driven decisions",
-    language: "Python",
-    topics: ["Python", "React", "D3.js", "Apache Kafka"],
-    html_url: "#",
-  },
-  {
-    id: "mobile-app",
-    name: "Cross-Platform Mobile App",
-    description: "React Native app for task management and team collaboration",
-    language: "TypeScript",
-    topics: ["React Native", "TypeScript", "Firebase", "Redux"],
-    html_url: "#",
-  },
-];
-
 export function Projects() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showFallback, setShowFallback] = useState(false);
 
   useEffect(() => {
     async function loadProjects() {
@@ -86,11 +49,8 @@ export function Projects() {
         );
 
         setRepos(reposWithTopics);
-        setShowFallback(false);
       } catch (err) {
         console.error("Error loading projects:", err);
-        // Silently fall back to curated projects without showing error
-        setShowFallback(true);
       } finally {
         setLoading(false);
       }
@@ -99,7 +59,7 @@ export function Projects() {
     loadProjects();
   }, []);
 
-  const renderProjectCard = (project: any, isFallback = false) => (
+  const renderProjectCard = (project: any) => (
     <Box
       key={project.id || project.name}
       bg="white"
@@ -176,9 +136,9 @@ export function Projects() {
           transition="all 0.3s"
           minW="auto"
           h="auto"
-          title={isFallback ? "View Project" : "View on GitHub"}
+          title="View on GitHub"
         >
-          <Icon as={isFallback ? ExternalLink : Github} w={5} h={5} />
+          <Icon as={Github} w={5} h={5} />
         </Button>
       </Box>
     </Box>
@@ -281,80 +241,46 @@ export function Projects() {
               mb={6}
             />
             <Text fontSize="lg" color="gray.600" maxW="2xl" mx="auto">
-              {showFallback
-                ? "Showcasing my professional work and achievements"
-                : "A showcase of my latest public projects from GitHub"}
+              A showcase of my latest public projects from GitHub
             </Text>
 
-            {/* Toggle between GitHub and Fallback Projects */}
-            <HStack justify="center" mt={6} spacing={4}>
-              <Button
-                size="sm"
-                variant={!showFallback ? "solid" : "outline"}
-                colorScheme="blue"
-                onClick={() => setShowFallback(false)}
-              >
-                GitHub Projects
-              </Button>
-              <Button
-                size="sm"
-                variant={showFallback ? "solid" : "outline"}
-                colorScheme="purple"
-                onClick={() => setShowFallback(true)}
-              >
-                Curated Projects
-              </Button>
-            </HStack>
-          </Box>
+            {repos.length === 0 ? (
+              <Text fontSize="lg" color="gray.500">
+                No projects found. Check out my GitHub profile for more
+                repositories.
+              </Text>
+            ) : (
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+                {repos.map((repo) => renderProjectCard(repo))}
+              </SimpleGrid>
+            )}
 
-          {showFallback ? (
-            // Show curated fallback projects
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-              {fallbackProjects.map((project) =>
-                renderProjectCard(project, true)
-              )}
-            </SimpleGrid>
-          ) : (
-            // Show GitHub projects
-            <>
-              {repos.length === 0 ? (
-                <Text fontSize="lg" color="gray.500">
-                  No projects found. Check out my GitHub profile for more
-                  repositories.
-                </Text>
-              ) : (
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-                  {repos.map((repo) => renderProjectCard(repo, false))}
-                </SimpleGrid>
-              )}
-            </>
-          )}
-
-          <Box textAlign="center" mt={12}>
-            <Button
-              as="a"
-              href={`https://${
-                contactData.urls.find((u) => u.label === "GitHub")?.url
-              }`}
-              target="_blank"
-              rel="noopener noreferrer"
-              bgGradient="linear(to-r, gray.900, gray.800)"
-              _hover={{
-                bgGradient: "linear(to-r, gray.800, gray.700)",
-                transform: "scale(1.05)",
-                shadow: "xl",
-              }}
-              color="white"
-              px={8}
-              py={4}
-              borderRadius="xl"
-              fontWeight="medium"
-              transition="all 0.3s"
-              shadow="lg"
-              leftIcon={<Icon as={Github} w={5} h={5} />}
-            >
-              View All Projects
-            </Button>
+            <Box textAlign="center" mt={12}>
+              <Button
+                as="a"
+                href={`https://${
+                  contactData.urls.find((u) => u.label === "GitHub")?.url
+                }`}
+                target="_blank"
+                rel="noopener noreferrer"
+                bgGradient="linear(to-r, gray.900, gray.800)"
+                _hover={{
+                  bgGradient: "linear(to-r, gray.800, gray.700)",
+                  transform: "scale(1.05)",
+                  shadow: "xl",
+                }}
+                color="white"
+                px={8}
+                py={4}
+                borderRadius="xl"
+                fontWeight="medium"
+                transition="all 0.3s"
+                shadow="lg"
+                leftIcon={<Icon as={Github} w={5} h={5} />}
+              >
+                View All Projects
+              </Button>
+            </Box>
           </Box>
         </VStack>
       </Container>
