@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -94,6 +95,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }),
           }}
         />
+
+        <Script
+          strategy="beforeInteractive"
+          src="https://cdnjs.middleware.io/browser/libs/0.0.2/middleware-rum.min.js"
+          id="middleware-lib"
+          crossOrigin="anonymous"
+        />
+        <Script strategy="beforeInteractive" id="middleware-init">
+          {`
+            if (window.Middleware) {
+              window.Middleware.track({
+                serviceName:"aragaoi.dev",
+                projectName:"aragaoi.dev",
+                accountKey:"ystlfqighyznnagowvlcnwyaixcacdgltvtq",
+                target: "https://ceser.middleware.io",
+      tracePropagationTargets: [/.*/],          
+                defaultAttributes: {
+                  "app.version": "1.0.0"
+                }
+              });
+            }
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) */}
