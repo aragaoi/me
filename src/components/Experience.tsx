@@ -98,7 +98,7 @@ export function Experience() {
                       size="md"
                       color="gray.900"
                       mb={2}
-                      textAlign="center"
+                      textAlign="left"
                       _groupHover={{ color: "blue.600" }}
                       transition="colors"
                     >
