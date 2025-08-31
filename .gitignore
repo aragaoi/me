@@ -91,3 +91,9 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# History files
+.history/
+
+# Next.js environment types
+next-env.d.ts
