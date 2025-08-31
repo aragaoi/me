@@ -1,0 +1,63 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "experience": "Experiência",
+    "skills": "Habilidades",
+    "projects": "Projetos"
+  },
+  "hero": {
+    "title": "Irenio de Aragão",
+    "subtitle": "Engenheiro de Software Sênior",
+    "description": "TypeScript, React, Node.js, PostgreSQL, Arquitetura, Cloud | 12+ Anos de Experiência",
+    "summary": "Engenheiro de Software Full Stack com 12+ anos construindo aplicações web escaláveis em e-commerce, SaaS e ERP. Especializado em liderança de equipes, TypeScript, React.js, Node.js e PostgreSQL. Histórico comprovado de melhoria de performance e liderança de equipes através de projetos impactantes."
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "education": {
+      "title": "Educação",
+      "degree": "Bacharelado em Sistemas de Informação",
+      "institution": "Universidade Federal de Santa Catarina (UFSC)",
+      "period": "Jan 2013 - Jan 2018"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "english": "Inglês (Proficiência profissional)",
+      "portuguese": "Português (Proficiência nativa)",
+      "spanish": "Espanhol (Proficiência limitada)"
+    },
+    "certifications": {
+      "title": "Certificações",
+      "items": [
+        "Microfrontends com React: Um Guia Completo para Desenvolvedores (Udemy)",
+        "NestJS: O Guia Completo para Desenvolvedores (Udemy)",
+        "Redux Saga com React: Curso Introdutório Rápido (Udemy)",
+        "Infraestrutura Ágil com Práticas DevOps (SESI SENAI/SC)"
+      ]
+    }
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "current": "Presente",
+    "achievements": "Principais Conquistas",
+    "skills": "Tecnologias"
+  },
+  "skills": {
+    "title": "Habilidades & Tecnologias",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Bancos de Dados",
+    "cloud_&_devops": "Cloud & DevOps",
+    "methodologies": "Metodologias",
+    "soft_skills": "Habilidades Interpessoais"
+  },
+  "projects": {
+    "title": "Projetos em Destaque",
+    "description": "Uma mostra de alguns dos meus projetos públicos e contribuições",
+    "view_all": "Ver Todos os Projetos"
+  },
+  "footer": {
+    "made_with": "Construído com",
+    "by": "por Irenio de Aragão"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects"
+  },
+  "hero": {
+    "title": "Irenio de Aragão",
+    "subtitle": "Senior Software Engineer",
+    "description": "TypeScript, React, Node.js, PostgreSQL, Architecture, Cloud | 12+ Years Experience",
+    "summary": "Full Stack Software Engineer with 12+ years building scalable web applications across e-commerce, SaaS, and ERP. Skilled in team leadership, TypeScript, React.js, Node.js, and PostgreSQL. Proven track record of improving performance and leading teams through impactful projects."
+  },
+  "about": {
+    "title": "About Me",
+    "education": {
+      "title": "Education",
+      "degree": "Bachelor's degree in Information Systems",
+      "institution": "Federal University of Santa Catarina (UFSC)",
+      "period": "Jan 2013 - Jan 2018"
+    },
+    "languages": {
+      "title": "Languages",
+      "english": "English (Professional working proficiency)",
+      "portuguese": "Portuguese (Native proficiency)",
+      "spanish": "Spanish (Limited working proficiency)"
+    },
+    "certifications": {
+      "title": "Certifications",
+      "items": [
+        "Microfrontends with React: A Complete Developer's Guide (Udemy)",
+        "NestJS: The Complete Developer's Guide (Udemy)",
+        "Redux Saga with React: Fast-track Redux Saga intro course (Udemy)",
+        "Agile Infrastructure with DevOps Practices (SESI SENAI/SC)"
+      ]
+    }
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "current": "Present",
+    "achievements": "Key Achievements",
+    "skills": "Technologies"
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "cloud_&_devops": "Cloud & DevOps",
+    "methodologies": "Methodologies",
+    "soft_skills": "Soft Skills"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "description": "A showcase of some of my public projects and contributions",
+    "view_all": "View All Projects"
+  },
+  "footer": {
+    "made_with": "Built with",
+    "by": "by Irenio de Aragão"
+  }
+}
