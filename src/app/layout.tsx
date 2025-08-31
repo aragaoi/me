@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
-        
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -96,6 +96,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body className={inter.className}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N8FNFWZH"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+        
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
