@@ -62,7 +62,6 @@ const fallbackProjects = [
 export function Projects() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [showFallback, setShowFallback] = useState(false);
 
   useEffect(() => {
@@ -90,9 +89,7 @@ export function Projects() {
         setShowFallback(false);
       } catch (err) {
         console.error("Error loading projects:", err);
-        setError(
-          err instanceof Error ? err.message : "Failed to load projects"
-        );
+        // Silently fall back to curated projects without showing error
         setShowFallback(true);
       } finally {
         setLoading(false);
@@ -118,21 +115,10 @@ export function Projects() {
       transition="all 0.3s"
     >
       <Box mb={6}>
-        <Heading
-          as="h3"
-          size="lg"
-          color="gray.900"
-          mb={3}
-          textAlign="center"
-        >
+        <Heading as="h3" size="lg" color="gray.900" mb={3} textAlign="center">
           {project.name}
         </Heading>
-        <Text
-          color="gray.600"
-          mb={4}
-          lineHeight="relaxed"
-          textAlign="center"
-        >
+        <Text color="gray.600" mb={4} lineHeight="relaxed" textAlign="center">
           {project.description}
         </Text>
       </Box>
@@ -295,12 +281,11 @@ export function Projects() {
               mb={6}
             />
             <Text fontSize="lg" color="gray.600" maxW="2xl" mx="auto">
-              {showFallback 
+              {showFallback
                 ? "Showcasing my professional work and achievements"
-                : "A showcase of my latest public projects from GitHub"
-              }
+                : "A showcase of my latest public projects from GitHub"}
             </Text>
-            
+
             {/* Toggle between GitHub and Fallback Projects */}
             <HStack justify="center" mt={6} spacing={4}>
               <Button
@@ -320,18 +305,14 @@ export function Projects() {
                 Curated Projects
               </Button>
             </HStack>
-            
-            {error && !showFallback && (
-              <Text fontSize="sm" color="orange.600" mt={2}>
-                Note: GitHub API unavailable, showing curated projects
-              </Text>
-            )}
           </Box>
 
           {showFallback ? (
             // Show curated fallback projects
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-              {fallbackProjects.map((project) => renderProjectCard(project, true))}
+              {fallbackProjects.map((project) =>
+                renderProjectCard(project, true)
+              )}
             </SimpleGrid>
           ) : (
             // Show GitHub projects

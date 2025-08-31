@@ -29,7 +29,13 @@ export async function fetchGitHubRepos(
     );
 
     if (!response.ok) {
-      throw new Error(`GitHub API error: ${response.status}`);
+      if (response.status === 403) {
+        throw new Error("GitHub API rate limit exceeded. Please try again later.");
+      } else if (response.status === 404) {
+        throw new Error("GitHub user not found.");
+      } else {
+        throw new Error(`GitHub API error: ${response.status} - ${response.statusText}`);
+      }
     }
 
     const repos: GitHubRepo[] = await response.json();
@@ -52,7 +58,7 @@ export async function fetchGitHubRepos(
     return filteredRepos;
   } catch (error) {
     console.error("Error fetching GitHub repos:", error);
-    return [];
+    throw error; // Re-throw to let the component handle it
   }
 }
 
@@ -73,6 +79,10 @@ export async function fetchRepoTopics(
     );
 
     if (!response.ok) {
+      if (response.status === 403) {
+        console.warn("Rate limited when fetching topics, returning empty array");
+        return [];
+      }
       return [];
     }
 

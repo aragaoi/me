@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Github, Linkedin } from "lucide-react";
+import { Calendar, Github, Linkedin, Mail, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
   Box,
@@ -78,7 +78,7 @@ export function Hero() {
       </Box>
 
       <Container maxW="7xl" position="relative" zIndex={10}>
-        <VStack spacing={8} textAlign="center">
+        <VStack spacing={16} textAlign="center">
           {/* Avatar */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
@@ -129,51 +129,27 @@ export function Hero() {
           >
             <Heading
               as="h1"
-              size="2xl"
+              size="4xl"
               color="white"
               mb={6}
-              letterSpacing="tight"
-              fontSize={{ base: "5xl", md: "7xl" }}
+              fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }}
+              fontWeight="bold"
+              lineHeight="tight"
+              aria-label="Main heading - Irenio de Aragão"
             >
               Irenio de Aragão
             </Heading>
-          </motion.div>
-
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
             <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="blue.200"
-              mb={4}
-              fontWeight="medium"
-              letterSpacing="wide"
-            >
-              Senior Software Engineer | TypeScript, React, Node.js, PostgreSQL,
-              Architecture, Cloud | 12+ Years Experience
-            </Text>
-          </motion.div>
-
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="gray.300"
+              fontSize={{ base: "xl", md: "2xl" }}
+              color="whiteAlpha.900"
+              mb={8}
               maxW="3xl"
               mx="auto"
               lineHeight="relaxed"
-              mb={8}
+              aria-label="Professional title and summary"
             >
-              Full Stack Software Engineer with 12+ years building scalable web
-              applications across e-commerce, SaaS, and ERP. Skilled in team
-              leadership, TypeScript, React.js, Node.js, and PostgreSQL. Proven
-              track record of improving performance and leading teams through
-              impactful projects.
+              Senior Full Stack Engineer passionate about creating innovative
+              solutions and delivering exceptional user experiences
             </Text>
           </motion.div>
 
@@ -182,12 +158,7 @@ export function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <HStack
-              spacing={6}
-              justify="center"
-              mb={12}
-              direction={{ base: "column", sm: "row" }}
-            >
+            <HStack spacing={6} justify="center" flexWrap="wrap">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -211,6 +182,7 @@ export function Hero() {
                   fontWeight="semibold"
                   transition="all 0.3s"
                   shadow="2xl"
+                  aria-label="Connect on LinkedIn"
                 >
                   <Icon as={Linkedin} w={5} h={5} mr={3} />
                   Get in Touch
@@ -239,6 +211,7 @@ export function Hero() {
                   borderRadius="2xl"
                   fontWeight="semibold"
                   transition="all 0.3s"
+                  aria-label="View work experience section"
                 >
                   <Icon as={Calendar} w={5} h={5} mr={3} />
                   View Experience
@@ -264,6 +237,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}
+                  aria-label="Visit LinkedIn profile"
                 >
                   <Box
                     w="50px"
@@ -279,6 +253,8 @@ export function Hero() {
                     border="1px solid"
                     borderColor="whiteAlpha.100"
                     cursor="pointer"
+                    role="button"
+                    tabIndex={0}
                   >
                     <Icon as={Linkedin} w={6} h={6} color="white" />
                   </Box>
@@ -296,6 +272,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}
+                  aria-label="Visit GitHub profile"
                 >
                   <Box
                     w="50px"
@@ -311,6 +288,8 @@ export function Hero() {
                     border="1px solid"
                     borderColor="whiteAlpha.100"
                     cursor="pointer"
+                    role="button"
+                    tabIndex={0}
                   >
                     <Icon as={Github} w={6} h={6} color="white" />
                   </Box>

@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Focus styles for better accessibility */
+*:focus {
+  outline: 2px solid #3182ce;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chakra-ui-dark {
+    --chakra-colors-gray-50: #ffffff;
+    --chakra-colors-gray-100: #f7fafc;
+    --chakra-colors-gray-900: #1a202c;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
