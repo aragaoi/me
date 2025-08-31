@@ -233,7 +233,7 @@ export function About() {
                     Languages
                   </Heading>
                   <VStack spacing={3} align="stretch">
-                    <HStack spacing={3}>
+                    <HStack spacing={3} justify="flex-start" w="full">
                       <Box
                         w={2}
                         h={2}
@@ -241,11 +241,11 @@ export function About() {
                         borderRadius="full"
                         flexShrink={0}
                       />
-                      <Text color="gray.700" fontWeight="medium" fontSize="sm">
+                      <Text color="gray.700" fontWeight="medium" fontSize="sm" textAlign="left">
                         English (Professional working proficiency)
                       </Text>
                     </HStack>
-                    <HStack spacing={3}>
+                    <HStack spacing={3} justify="flex-start" w="full">
                       <Box
                         w={2}
                         h={2}
@@ -253,11 +253,11 @@ export function About() {
                         borderRadius="full"
                         flexShrink={0}
                       />
-                      <Text color="gray.700" fontWeight="medium" fontSize="sm">
+                      <Text color="gray.700" fontWeight="medium" fontSize="sm" textAlign="left">
                         Portuguese (Native proficiency)
                       </Text>
                     </HStack>
-                    <HStack spacing={3}>
+                    <HStack spacing={3} justify="flex-start" w="full">
                       <Box
                         w={2}
                         h={2}
@@ -265,7 +265,7 @@ export function About() {
                         borderRadius="full"
                         flexShrink={0}
                       />
-                      <Text color="gray.700" fontWeight="medium" fontSize="sm">
+                      <Text color="gray.700" fontWeight="medium" fontSize="sm" textAlign="left">
                         Spanish (Limited working proficiency)
                       </Text>
                     </HStack>
