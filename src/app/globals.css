@@ -5,8 +5,8 @@
 /* Skip link for accessibility */
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 6px;
+  top: -100px;
+  left: -100px;
   background: #000;
   color: white;
   padding: 8px;
@@ -16,12 +16,15 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;
+  pointer-events: none;
 }
 
 .skip-link:focus {
   top: 6px;
+  left: 6px;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 /* Focus styles for better accessibility */
