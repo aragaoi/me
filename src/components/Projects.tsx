@@ -23,6 +23,42 @@ import {
   GitHubRepo,
 } from "@/services/github";
 
+// Static fallback projects based on actual GitHub repositories
+const fallbackProjects = [
+  {
+    id: "me",
+    name: "Portfolio Website",
+    description: "Modern, responsive portfolio built with Next.js, TypeScript, and Chakra UI. Features internationalization, dark mode, and responsive design.",
+    language: "TypeScript",
+    topics: ["Next.js", "React", "TypeScript", "Chakra UI", "i18n", "Portfolio"],
+    html_url: "https://github.com/aragaoi/me",
+  },
+  {
+    id: "context-storage",
+    name: "Context Storage",
+    description: "Generic AsyncLocalStorage wrapper for context management in Node.js applications. Provides a clean API for managing async context across function calls.",
+    language: "TypeScript",
+    topics: ["Node.js", "TypeScript", "AsyncLocalStorage", "Context Management", "Utility"],
+    html_url: "https://github.com/aragaoi/context-storage",
+  },
+  {
+    id: "folder-cleaner",
+    name: "Folder Cleaner",
+    description: "A smart folder cleaner that detects and helps clean up sensitive files on Unix-like systems. Built with Python for system administration tasks.",
+    language: "Python",
+    topics: ["Python", "System Administration", "File Management", "Security", "Unix"],
+    html_url: "https://github.com/aragaoi/folder-cleaner",
+  },
+  {
+    id: "card-game-api",
+    name: "Card Game API",
+    description: "An API to handle decks and cards to be used in any card game. Provides card management, shuffling, and game logic functionality.",
+    language: "TypeScript",
+    topics: ["TypeScript", "API", "Card Games", "Game Logic", "Backend"],
+    html_url: "https://github.com/aragaoi/card-game-api",
+  },
+];
+
 export function Projects() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -241,46 +277,49 @@ export function Projects() {
               mb={6}
             />
             <Text fontSize="lg" color="gray.600" maxW="2xl" mx="auto">
-              A showcase of my latest public projects from GitHub
+              {repos.length === 0
+                ? "Showcasing my professional work and achievements"
+                : "A showcase of my latest public projects from GitHub"}
             </Text>
+          </Box>
 
-            {repos.length === 0 ? (
-              <Text fontSize="lg" color="gray.500">
-                No projects found. Check out my GitHub profile for more
-                repositories.
-              </Text>
-            ) : (
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-                {repos.map((repo) => renderProjectCard(repo))}
-              </SimpleGrid>
-            )}
+          {repos.length === 0 ? (
+            // Show fallback projects when GitHub API fails or no repos found
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+              {fallbackProjects.map((project) => renderProjectCard(project))}
+            </SimpleGrid>
+          ) : (
+            // Show GitHub projects
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+              {repos.map((repo) => renderProjectCard(repo))}
+            </SimpleGrid>
+          )}
 
-            <Box textAlign="center" mt={12}>
-              <Button
-                as="a"
-                href={`https://${
-                  contactData.urls.find((u) => u.label === "GitHub")?.url
-                }`}
-                target="_blank"
-                rel="noopener noreferrer"
-                bgGradient="linear(to-r, gray.900, gray.800)"
-                _hover={{
-                  bgGradient: "linear(to-r, gray.800, gray.700)",
-                  transform: "scale(1.05)",
-                  shadow: "xl",
-                }}
-                color="white"
-                px={8}
-                py={4}
-                borderRadius="xl"
-                fontWeight="medium"
-                transition="all 0.3s"
-                shadow="lg"
-                leftIcon={<Icon as={Github} w={5} h={5} />}
-              >
-                View All Projects
-              </Button>
-            </Box>
+          <Box textAlign="center" mt={12}>
+            <Button
+              as="a"
+              href={`https://${
+                contactData.urls.find((u) => u.label === "GitHub")?.url
+              }`}
+              target="_blank"
+              rel="noopener noreferrer"
+              bgGradient="linear(to-r, gray.900, gray.800)"
+              _hover={{
+                bgGradient: "linear(to-r, gray.800, gray.700)",
+                transform: "scale(1.05)",
+                shadow: "xl",
+              }}
+              color="white"
+              px={8}
+              py={4}
+              borderRadius="xl"
+              fontWeight="medium"
+              transition="all 0.3s"
+              shadow="lg"
+              leftIcon={<Icon as={Github} w={5} h={5} />}
+            >
+              View All Projects
+            </Button>
           </Box>
         </VStack>
       </Container>
