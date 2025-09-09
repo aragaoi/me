@@ -129,7 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           id="amplitude-lib"
           crossOrigin="anonymous"
         />
-        <Script strategy="beforeInteractive" id="amplitude-init">>
+        <Script strategy="beforeInteractive" id="amplitude-init">
           {`
             window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
             window.amplitude.init(
