@@ -123,6 +123,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
           `}
         </Script>
+        <Script src="https://cdn.amplitude.com/script/ab99a2e1c1475d524a3f80b217d6e8f0.js"></Script>
+        <Script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('ab99a2e1c1475d524a3f80b217d6e8f0', {"fetchRemoteConfig":true,"autocapture":{"attribution":true,"fileDownloads":true,"formInteractions":true,"pageViews":true,"sessions":true,"elementInteractions":true,"networkTracking":true,"webVitals":true,"frustrationInteractions":true}});</Script>
       </head>
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) */}
